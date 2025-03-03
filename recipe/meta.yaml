@@ -12,8 +12,6 @@ source:
   sha256: 1a345c2078688710020eba2575daec1477d3f4444cc82733c8fd46d20aea7375
 
 build:
-  # Checking windows to see if it passes. Uncomment the line if it fails.
-  # skip: true  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -26,6 +24,7 @@ requirements:
     - r-rcpparmadillo              # [build_platform != target_platform]
     - r-rcppparallel               # [build_platform != target_platform]
     - r-rcppziggurat               # [build_platform != target_platform]
+    - r-zigg                       # [build_platform != target_platform]
     - {{ compiler('c') }}          # [not win]
     - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
@@ -42,17 +41,17 @@ requirements:
     - r-rcpp >=0.12.3
     - r-rcpparmadillo
     - r-rcppparallel
-    - r-rcppziggurat
-    - libblas
-    - liblapack
-    - libgomp                      # [linux]
-    - llvm-openmp                  # [osx]
+    - r-zigg
   run:
     - r-base
     - r-rcpp >=0.12.3
     - r-rcpparmadillo
     - r-rcppparallel
-    - r-rcppziggurat
+    - r-zigg
+    - libblas
+    - liblapack
+    - libgomp                      # [linux]
+    - llvm-openmp                  # [osx]
 
 test:
   commands:
